@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaolin Path V6.3</title>
+  <link rel="stylesheet" href="./style.css?v=63" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <div class="eyebrow">V6.3 • simplified GitHub Pages build</div>
+        <h1>Shaolin Path</h1>
+        <p class="muted">Simplified phone-friendly build with day-based progression, settings, local save, real video links, and local image assets.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card"><div class="label">Program day</div><div class="value" id="heroProgramDay">1 / 365</div></div>
+        <div class="stat-card"><div class="label">Year progress</div><div class="value" id="heroYearProgress">0%</div></div>
+        <div class="stat-card"><div class="label">Completed days</div><div class="value" id="heroCompletedDays">0</div></div>
+        <div class="stat-card"><div class="label">Level</div><div class="value" id="heroLevel">1</div></div>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="home">Home</button>
+      <button class="tab-btn" data-tab="today">Today</button>
+      <button class="tab-btn" data-tab="path">Path</button>
+      <button class="tab-btn" data-tab="year">Year</button>
+      <button class="tab-btn" data-tab="library">Library</button>
+      <button class="tab-btn" data-tab="progress">Progress</button>
+      <button class="tab-btn" data-tab="journal">Journal</button>
+      <button class="tab-btn" data-tab="settings">Settings</button>
+    </nav>
+
+    <main>
+      <section id="tab-home" class="tab-panel">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Home</h2><span class="badge" id="homeBadge">Level 1</span></div>
+            <div class="stat-grid">
+              <div class="card"><div class="label">Next unlock</div><div class="value-sm" id="nextUnlockText">Level 2</div></div>
+              <div class="card"><div class="label">Mind</div><div class="value-sm" id="mindScoreText">0 / 10</div></div>
+              <div class="card"><div class="label">Body</div><div class="value-sm" id="bodyScoreText">0 / 10</div></div>
+              <div class="card"><div class="label">Discipline</div><div class="value-sm" id="disciplineScoreText">0 / 10</div></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="panel-subhead">Quick Start</div>
+            <div id="quickStartList" class="stack"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>Today at a glance</h2></div>
+            <div id="homeTodayList" class="stack"></div>
+            <div class="spacer"></div>
+            <div class="panel-subhead">Quick Tools</div>
+            <div class="btn-row">
+              <button id="goCurrentBtn" class="btn">Go to current day</button>
+              <button id="exportBtn" class="btn">Export</button>
+              <button id="importBtn" class="btn">Import</button>
+              <input id="importFile" type="file" accept="application/json" hidden />
+              <button id="resetBtn" class="btn danger">Reset</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-today" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="stack">
+            <div class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Today's Training</h2>
+                  <div id="todaySubtitle" class="muted"></div>
+                </div>
+                <span class="badge" id="todayPhaseBadge">Phase 1</span>
+              </div>
+              <div class="notice">
+                <strong id="sessionModeText">Standard</strong>
+                <div id="sessionModeReason" class="muted"></div>
+              </div>
+              <div class="spacer"></div>
+              <div class="panel-subhead">Pre-checks</div>
+              <div id="readinessSliders" class="grid two-col"></div>
+              <label class="field-label" for="readinessNotes">Pre-check notes</label>
+              <textarea id="readinessNotes" placeholder="Poor sleep, tight hips, mentally flat, sore chest..."></textarea>
+              <div class="btn-row">
+                <button id="savePrecheckBtn" class="btn success">Save pre-checks</button>
+                <button id="unlockPrecheckBtn" class="btn">Unlock pre-checks</button>
+              </div>
+              <div class="spacer"></div>
+              <div id="missionList" class="stack"></div>
+              <div class="btn-row">
+                <button id="markDayCompleteBtn" class="btn success">Complete current day</button>
+                <button id="prevDayBtn" class="btn">Previous preview day</button>
+                <button id="nextDayBtn" class="btn">Next preview day</button>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head"><h2>Week Objective</h2></div>
+              <div id="weekObjective" class="muted"></div>
+              <div class="spacer"></div>
+              <div id="weekFocusList" class="grid two-col"></div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="panel">
+              <div class="panel-head"><h2>Quick Help</h2></div>
+              <div id="todayQuickHelp" class="stack"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2>Dog Walk Mind Script</h2></div>
+              <div id="walkPromptList" class="stack"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2>After Session Review</h2></div>
+              <div id="postSessionGrid" class="grid two-col"></div>
+              <label class="field-label" for="sessionNotes">After-session notes</label>
+              <textarea id="sessionNotes" placeholder="What felt strong? What broke down?"></textarea>
+              <div class="btn-row">
+                <button id="savePostSessionBtn" class="btn success">Save after-session review</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-path" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Training Path</h2></div>
+            <div id="pathGrid" class="grid two-col"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 id="pathTitle"></h2>
+                <div id="pathSubtitle" class="muted"></div>
+              </div>
+              <span id="pathStatus" class="badge">Unlocked</span>
+            </div>
+            <div id="pathSummary" class="card"></div>
+            <div class="spacer"></div>
+            <div class="panel-subhead">Includes</div>
+            <div id="pathModules" class="stack"></div>
+            <div class="spacer"></div>
+            <div class="panel-subhead">Unlock rule</div>
+            <div id="pathUnlockRule" class="card"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-year" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>52-Week Roadmap</h2></div>
+            <div id="weekList" class="stack scroll"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 id="yearWeekTitle"></h2>
+                <div id="yearWeekPhase" class="muted"></div>
+              </div>
+              <span id="yearWeekStatus" class="badge">Live</span>
+            </div>
+            <div id="yearWeekObjective" class="card"></div>
+            <div class="spacer"></div>
+            <div id="dayCards" class="grid two-col"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-library" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Movement Library</h2></div>
+            <div id="moduleList" class="stack scroll"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 id="moduleTitle"></h2>
+                <div id="moduleArea" class="muted"></div>
+              </div>
+              <span id="moduleLevelBadge" class="badge">Level 1</span>
+            </div>
+            <div id="moduleMission" class="card"></div>
+            <div class="spacer"></div>
+            <div id="moduleImages" class="grid three-col"></div>
+            <div class="spacer"></div>
+            <div class="card"><strong>Video reference</strong><div id="moduleVideo" class="muted"></div></div>
+            <div class="spacer"></div>
+            <div class="grid two-col">
+              <div class="card"><strong>Looks right when...</strong><div id="moduleLooks" class="muted"></div></div>
+              <div class="card"><strong>Feels right when...</strong><div id="moduleFeels" class="muted"></div></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="grid two-col">
+              <div class="card"><strong>How to set up</strong><div id="moduleSetup" class="muted"></div></div>
+              <div class="card"><strong>Primary cues</strong><div id="moduleCues" class="muted"></div></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="card"><strong>Step-by-step</strong><div id="moduleSteps" class="muted"></div></div>
+            <div class="spacer"></div>
+            <div class="grid two-col">
+              <div class="card"><strong>Coaching help</strong><div id="moduleCoaching" class="muted"></div></div>
+              <div class="card"><strong>Common mistakes</strong><div id="moduleMistakes" class="muted"></div></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="card"><strong>Pass standard</strong><div id="moduleStandards" class="muted"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-progress" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Current Training Targets</h2></div>
+            <div id="progressGrid" class="grid two-col"></div>
+          </div>
+          <div class="stack">
+            <div class="panel">
+              <div class="panel-head"><h2>Reflection Checklist</h2></div>
+              <div id="focusPromptList" class="stack"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2>How To Use V6.3</h2></div>
+              <div id="howToList" class="stack"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-journal" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Training Journal</h2></div>
+            <textarea id="journalBox" placeholder="How did the session feel? What looked good? What broke down?"></textarea>
+          </div>
+          <div class="stack">
+            <div class="panel">
+              <div class="panel-head"><h2>Evidence Log</h2></div>
+              <input id="evidenceBox" type="text" placeholder="Phone video / clip filename / album link" />
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2>Reminder</h2></div>
+              <div class="card">This app progresses by completed day. Previewing other days does not move your real progression forward.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-settings" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Settings</h2></div>
+            <div class="stack">
+              <div class="card">
+                <strong>Appearance</strong>
+                <div class="muted">Switch between dark and light mode.</div>
+                <div class="btn-row top-gap">
+                  <button id="themeDarkBtn" class="btn">Dark</button>
+                  <button id="themeLightBtn" class="btn">Light</button>
+                </div>
+              </div>
+              <div class="card">
+                <strong>Storage</strong>
+                <div id="settingsStorageText" class="muted"></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>Reality check</h2></div>
+            <div class="stack" id="mediaReadinessList"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js?v=63"></script>
+</body>
+</html>
