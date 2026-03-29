@@ -5,6 +5,7 @@ const defaultState = {
   selectedLibrary: "pushups",
   currentDayIndex: 0,
   completedDays: {},
+  completedLog: [],
   journal: [],
   settings: {
     intensity: "push",
@@ -229,8 +230,7 @@ function targetFor(ex) {
 }
 
 function streakCount() {
-  const completed = Object.values(state.completedDays || {}).filter(Boolean).length;
-  return completed;
+  return Array.isArray(state.completedLog) ? state.completedLog.length : 0;
 }
 
 function consistencyPct() {
@@ -732,7 +732,11 @@ function bindEvents() {
   const completeBtn = document.getElementById("completeDayBtn");
   if (completeBtn) {
     completeBtn.onclick = () => {
-      state.completedDays[state.currentDayIndex] = true;
+      if (!state.completedDays[state.currentDayIndex]) {
+        state.completedDays[state.currentDayIndex] = true;
+        if (!Array.isArray(state.completedLog)) state.completedLog = [];
+        state.completedLog.push({ dayIndex: state.currentDayIndex, date: new Date().toISOString() });
+      }
       saveState();
       renderApp();
     };

@@ -103,7 +103,7 @@ a{color:inherit}
 .tabbar-inner{
   max-width:var(--max);margin:0 auto;background:rgba(16,27,45,.9);
   border:1px solid rgba(255,255,255,.05);border-radius:20px;padding:8px;
-  display:grid;grid-template-columns:repeat(7,1fr);gap:6px;
+  display:grid;grid-template-columns:repeat(8,1fr);gap:6px;
 }
 .tab{
   border-radius:14px;border:0;background:transparent;color:var(--muted);
