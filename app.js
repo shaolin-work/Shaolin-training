@@ -152,6 +152,221 @@ const libraryItems = [
   { slug: "seatedmed", title: "Seated meditation", type: "Mind drill", description: "Improves attention, calm, and the ability to stay with discomfort or noise without breaking focus.", cues: ["Spine tall", "Hands relaxed", "Long exhale", "Bring attention back each time it drifts"], assets: ["seatedmed_1.svg", "seatedmed_2.svg", "seatedmed_3.svg"] }
 ];
 
+const libraryEnhancements = {
+  pushups: {
+    howTo: [
+      "Set hands just outside shoulder width and screw them lightly into the floor.",
+      "Brace abs and glutes first so the body lifts as one straight unit.",
+      "Lower chest between the hands with elbows angled roughly 30–45° from the body.",
+      "Drive the floor away and finish with full control, not a collapsed lockout."
+    ],
+    mistakes: ["Sagging hips", "Flaring elbows too wide", "Half reps", "Neck poking forward"],
+    regressions: ["Incline push-up on bench, bed, or wall", "Knee push-up while keeping ribs down"],
+    progressions: ["Slow 3-second lowering", "Pause push-ups", "Feet-elevated push-ups"],
+    recoverySwap: "Switch to incline push-ups or wall push-ups and cut total reps by about 40%.",
+    whenToPullBack: "Trim back if wrists, shoulders, or sternum feel sharp or unstable.",
+    videoQueries: ["push up form tutorial", "incline push up tutorial", "how to progress push ups"]
+  },
+  horse: {
+    howTo: [
+      "Step out wide enough that the thighs have to work but the knees still track well over the feet.",
+      "Sit the hips down while keeping the chest tall and the spine stacked.",
+      "Press the knees out gently and root the feet into the floor.",
+      "Breathe slowly and keep the face, jaw, and shoulders relaxed."
+    ],
+    mistakes: ["Knees collapsing in", "Leaning too far forward", "Standing too high", "Holding breath"],
+    regressions: ["Higher horse stance", "Shorter hold with multiple rounds"],
+    progressions: ["Longer holds", "Pulse finishers", "Loaded hold later on if you ever add weights"],
+    recoverySwap: "Raise the stance height and reduce hold time if knees, hips, or low back are irritated.",
+    whenToPullBack: "Do not grind through sharp knee pain or hip pinching.",
+    videoQueries: ["horse stance tutorial kung fu", "martial arts horse stance form", "horse stance beginner guide"]
+  },
+  plank: {
+    howTo: [
+      "Set shoulders over elbows or hands, depending on the plank variation.",
+      "Brace abs, glutes, and quads before the hold starts.",
+      "Keep ribs tucked and the neck long.",
+      "Breathe behind the brace instead of letting the body sag."
+    ],
+    mistakes: ["Low back sag", "Hips too high", "Holding breath", "Looking too far forward"],
+    regressions: ["Knee plank", "Shorter rounds with perfect tension"],
+    progressions: ["Longer hold", "Shoulder taps", "Hardstyle plank"],
+    recoverySwap: "Use shorter rounds or knee planks if the shoulders or low back are cranky.",
+    whenToPullBack: "Back off if you cannot keep a neutral trunk.",
+    videoQueries: ["plank form tutorial", "knee plank tutorial", "hardstyle plank tutorial"]
+  },
+  straightpunch: {
+    howTo: [
+      "Set the stance first so the body is rooted before the punch leaves.",
+      "Punch straight down the center line with a crisp exhale.",
+      "Snap the fist back to guard just as sharply as it went out.",
+      "Keep shoulders low and avoid over-rotating."
+    ],
+    mistakes: ["Dropping the non-punching hand", "Punching with a shrug", "Reaching instead of snapping", "Elbows flaring out"],
+    regressions: ["Slow-motion punches", "Shorter punch rounds with full focus"],
+    progressions: ["Faster rounds", "Timed combos", "Shadowboxing integration"],
+    recoverySwap: "Go slower and focus on clean form rather than speed if elbows or shoulders feel off.",
+    whenToPullBack: "Reduce volume if the shoulder front or elbow joint feels irritated.",
+    videoQueries: ["straight punch tutorial martial arts", "jab cross form basics", "kung fu straight punch technique"]
+  },
+  frontkick: {
+    howTo: [
+      "Lift the knee first to chamber the kick.",
+      "Snap the lower leg out without leaning back excessively.",
+      "Recoil the leg cleanly before setting it down.",
+      "Stay tall and balanced on the standing leg."
+    ],
+    mistakes: ["Swinging the leg from the hip with no chamber", "Leaning back too far", "Dropping the hands", "Slamming the foot down"],
+    regressions: ["Knee chamber holds", "Low front kicks", "Supported balance work"],
+    progressions: ["Higher kick only if shape stays clean", "Timed kick rounds", "Kick-and-recoil holds"],
+    recoverySwap: "Keep kicks lower and use chamber drills only if hips or lower back feel tight.",
+    whenToPullBack: "Pull back if hip flexors pinch or balance feels dangerous.",
+    videoQueries: ["front kick tutorial martial arts", "front snap kick basics", "beginner front kick form"]
+  },
+  qigong: {
+    howTo: [
+      "Stand tall with a soft chest and relaxed jaw.",
+      "Breathe into the lower ribs and belly instead of only the upper chest.",
+      "Let the exhale run slightly longer than the inhale.",
+      "Keep the movement slow enough that the nervous system actually downshifts."
+    ],
+    mistakes: ["Shrugging on inhale", "Rushing the breath", "Collapsing posture", "Trying too hard to force relaxation"],
+    regressions: ["Short 2-minute breathing block", "Seated breathing"],
+    progressions: ["Longer breathing sets", "More coordinated arm patterns", "Longer exhale emphasis"],
+    recoverySwap: "This is already one of the main recovery swaps. Use it liberally on red days.",
+    whenToPullBack: "If you feel dizzy, shorten the breath and return to normal breathing.",
+    videoQueries: ["qigong breathing tutorial", "standing qigong breathing", "beginner qigong breath practice"]
+  },
+  standingmed: {
+    howTo: [
+      "Stand with knees unlocked and the crown of the head lifting.",
+      "Let the shoulders drop while the torso stays tall.",
+      "Rest attention on the breath or on the feeling of the feet on the floor.",
+      "Hold still without going limp."
+    ],
+    mistakes: ["Locking knees", "Collapsing chest", "Fidgeting constantly", "Clenching the face"],
+    regressions: ["1–2 minute holds", "Seated meditation instead"],
+    progressions: ["Longer holds", "Hands-held guard position", "Quiet nasal breathing only"],
+    recoverySwap: "Use this instead of hard work when mental overload is the issue more than physical pain.",
+    whenToPullBack: "Sit down if dizziness or headache builds.",
+    videoQueries: ["standing meditation tutorial", "zhan zhuang beginner", "standing qigong posture basics"]
+  },
+  footwork: {
+    howTo: [
+      "Stay light on the feet with short steps.",
+      "Move forward, back, and angle out while keeping posture organized.",
+      "Let the feet place you instead of crossing and tangling.",
+      "Stay relaxed enough to keep breathing under control."
+    ],
+    mistakes: ["Crossing feet", "Bouncing wildly", "Stiff upper body", "Too much speed too early"],
+    regressions: ["Slow step patterns", "Short 20-second rounds"],
+    progressions: ["Longer rounds", "Shadowboxing added", "Direction-call drills"],
+    recoverySwap: "Use slower technical footwork instead of fast rounds when the body feels flat.",
+    whenToPullBack: "Reduce speed if calves, ankles, or balance are poor that day.",
+    videoQueries: ["basic footwork martial arts tutorial", "boxing footwork basics", "beginner movement drills combat sports"]
+  },
+  cat: {
+    howTo: [
+      "Start on hands and knees with even pressure through both hands.",
+      "Round the spine one segment at a time as you exhale.",
+      "Reverse into extension smoothly rather than yanking the neck.",
+      "Move deliberately instead of chasing huge range."
+    ],
+    mistakes: ["Dumping into the neck", "Rushing", "Forcing end range", "Uneven weight through hands"],
+    regressions: ["Smaller range", "Fewer slow reps"],
+    progressions: ["Longer pauses at end ranges", "Breath-synced tempo work"],
+    recoverySwap: "Already a recovery drill. Use it as written if the body is stiff.",
+    whenToPullBack: "Keep range gentle if the low back feels irritated.",
+    videoQueries: ["cat cow mobility tutorial", "spinal mobility cat cow", "cat camel exercise form"]
+  },
+  bow: {
+    howTo: [
+      "Step long enough that the front knee can bend while the rear leg stays active.",
+      "Keep the torso upright rather than collapsing over the front thigh.",
+      "Drive the feet into the floor to feel the stance connect.",
+      "Stay calm and breathe while holding position."
+    ],
+    mistakes: ["Front knee drifting badly inward", "Rear heel wandering", "Leaning too far forward", "Overstriding and losing balance"],
+    regressions: ["Shorter stance", "Shorter holds"],
+    progressions: ["Longer holds", "Punches from bow stance", "Transition practice"],
+    recoverySwap: "Shorten the stance and reduce hold time if hips or knees feel rough.",
+    whenToPullBack: "Do not fight through sharp knee strain.",
+    videoQueries: ["bow stance tutorial kung fu", "front stance basics martial arts", "kung fu stance training bow stance"]
+  },
+  shujingong: {
+    howTo: [
+      "Move in a relaxed continuous rhythm.",
+      "Let the breath dictate the pace.",
+      "Use enough range to feel the body open, not strain.",
+      "Finish feeling better than when you started."
+    ],
+    mistakes: ["Rushing", "Forcing deep stretch", "Holding the breath", "Treating it as meaningless filler"],
+    regressions: ["Shorter flow", "Single movement repeated"],
+    progressions: ["Longer flow", "Better breath coordination", "More mindful transitions"],
+    recoverySwap: "This is a primary red-day movement. Keep it gentle and deliberate.",
+    whenToPullBack: "If any motion pinches, shorten range immediately.",
+    videoQueries: ["shu jing gong tutorial", "qigong stretching flow", "gentle qigong mobility routine"]
+  },
+  seatedmed: {
+    howTo: [
+      "Sit tall with support if needed so the spine can stay long.",
+      "Rest the hands and settle the gaze softly.",
+      "Follow the breath and return attention each time the mind drifts.",
+      "Treat distractions as repetitions, not failure."
+    ],
+    mistakes: ["Slumping", "Chasing silence too aggressively", "Judging every thought", "Holding jaw tension"],
+    regressions: ["2-minute rounds", "Breath counting"],
+    progressions: ["Longer sits", "Eyes-open stillness", "Body scan focus"],
+    recoverySwap: "Use this when stress is high and the body needs discipline without impact.",
+    whenToPullBack: "Change posture if numbness or back pain builds.",
+    videoQueries: ["seated meditation posture tutorial", "beginner meditation sitting posture", "how to meditate sitting upright"]
+  }
+};
+
+libraryItems.forEach(item => Object.assign(item, libraryEnhancements[item.slug] || {}));
+
+function youtubeSearchUrl(query) {
+  return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+}
+function webSearchUrl(query) {
+  return `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+}
+function renderResourceLinks(item) {
+  const queries = item.videoQueries || [`${item.title} tutorial`];
+  return `
+    <div class="resource-grid">
+      ${queries.map((q, index) => `<a class="resource-link" href="${youtubeSearchUrl(q)}" target="_blank" rel="noopener noreferrer">Video ${index + 1}: ${q}</a>`).join('')}
+      <a class="resource-link" href="${webSearchUrl(item.title + ' exercise form guide')}" target="_blank" rel="noopener noreferrer">Written form guide search</a>
+    </div>
+  `;
+}
+function recoveryCoachNote(readiness) {
+  if (readiness.zone === 'red') {
+    return 'Today is not a prove-yourself day. Keep the chain alive, cut joint stress, and switch the hardest drill to its recovery version.';
+  }
+  if (readiness.zone === 'amber') {
+    return 'You still train today, but the goal is productive work, not reckless volume. Keep 1–2 reps in reserve and shorten holds before form breaks.';
+  }
+  return 'You are clear to push. Chase clean intensity, visible body change, and a calm aggressive mindset.';
+}
+function readinessAdjustmentList(readiness) {
+  const lines = [];
+  if (readiness.zone === 'green') {
+    lines.push('Use the planned targets. Add intent and perfect form before you add more volume.');
+  }
+  if (readiness.zone === 'amber') {
+    lines.push('Trim total volume to around 80–85%.');
+    lines.push('Drop the hardest finisher if form quality starts sliding.');
+    lines.push('Take slightly longer breaths between efforts instead of rushing the rest.');
+  }
+  if (readiness.zone === 'red') {
+    lines.push('Cut volume to roughly 60%.');
+    lines.push('Swap impact or high-tension drills for breathing, mobility, or easier technical work.');
+    lines.push('If joint pain feels sharp, skip the offending drill completely and protect the long game.');
+  }
+  return `<ul class="bullet-list">${lines.map(x => `<li>${x}</li>`).join('')}</ul>`;
+}
+
 let state = loadState();
 window.currentLibraryImageIndex = 0;
 
@@ -415,9 +630,19 @@ function renderToday() {
           </div>
 
           <div class="notice">${day.intensityNote} ${readiness.zone === 'amber' ? 'Today the app trims volume and intensity.' : ''} ${readiness.zone === 'red' ? 'Today the app keeps the habit but pushes you into recovery logic.' : ''}</div>
+          <div class="coach-panel">
+            <h5>Coach call for today</h5>
+            <p>${recoveryCoachNote(readiness)}</p>
+            ${readinessAdjustmentList(readiness)}
+          </div>
 
           <div class="exercise-list">
-            ${day.exercises.map(ex => `
+            ${day.exercises.map(ex => {
+              const lib = libraryItems.find(li => li.title.toLowerCase() === ex.name.toLowerCase() || ex.name.toLowerCase().includes(li.title.toLowerCase()) || li.title.toLowerCase().includes(ex.name.toLowerCase().split(' ')[0]));
+              const swapText = lib?.recoverySwap ? `<div class=\"swap-note\"><strong>Recovery swap:</strong> ${lib.recoverySwap}</div>` : '';
+              const guardText = lib?.whenToPullBack ? `<div class=\"warn-note\"><strong>Back off if:</strong> ${lib.whenToPullBack}</div>` : '';
+              const linkBtn = lib ? `<button class=\"btn btn-soft btn-inline\" data-libraryjump=\"${lib.slug}\">Open library help</button>` : '';
+              return `
               <article class="exercise ${readiness.zone}">
                 <div class="exercise-top">
                   <div>
@@ -427,8 +652,11 @@ function renderToday() {
                   <div class="target">${targetFor(ex)}</div>
                 </div>
                 <small>${ex.notes}</small>
-              </article>
-            `).join('')}
+                ${swapText}
+                ${guardText}
+                ${linkBtn}
+              </article>`;
+            }).join('')}
           </div>
 
           <div class="action-row">
@@ -499,7 +727,17 @@ function renderLibrary() {
           <div class="card detail-card">
             <h4>${item.title}</h4>
             <p><strong>${item.type}</strong> · ${item.description}</p>
-            <ul>${item.cues.map(c => `<li>${c}</li>`).join('')}</ul>
+            <div class="detail-section"><strong>Primary cues</strong><ul>${item.cues.map(c => `<li>${c}</li>`).join('')}</ul></div>
+            <div class="detail-section"><strong>How to do it</strong><ol class="bullet-list ordered">${(item.howTo || []).map(c => `<li>${c}</li>`).join('')}</ol></div>
+            <div class="detail-columns">
+              <div><strong>Common mistakes</strong><ul class="bullet-list">${(item.mistakes || []).map(c => `<li>${c}</li>`).join('')}</ul></div>
+              <div><strong>Recovery / easier options</strong><ul class="bullet-list">${(item.regressions || []).map(c => `<li>${c}</li>`).join('')}</ul></div>
+            </div>
+            <div class="detail-columns">
+              <div><strong>Harder progressions</strong><ul class="bullet-list">${(item.progressions || []).map(c => `<li>${c}</li>`).join('')}</ul></div>
+              <div><strong>Body warning signs</strong><p class="small muted">${item.whenToPullBack || ''}</p><p class="small muted"><strong>Swap:</strong> ${item.recoverySwap || ''}</p></div>
+            </div>
+            <div class="detail-section"><strong>Video + guide links</strong>${renderResourceLinks(item)}</div>
             <div class="library-actions">
               <button class="btn btn-primary" data-go="today">Use in today plan</button>
               <button class="btn btn-secondary" id="prevImgBtn">Previous image</button>
@@ -645,9 +883,14 @@ function renderSettings() {
           </article>
 
           <article class="card settings-wrap">
-            <h4>Deploy notes</h4>
+            <h4>Backup + deploy</h4>
             <p>This rebuild is still a simple static site: <strong>index.html + style.css + app.js + assets</strong>. That keeps it far less fragile on GitHub Pages than a router-based app.</p>
-            <div class="notice">Upload these files to the repo root and make sure GitHub Pages is serving the correct branch and folder.</div>
+            <div class="action-row">
+              <button class="btn btn-secondary" id="exportDataBtn">Export progress backup</button>
+              <button class="btn btn-soft" id="importDataBtn">Import backup</button>
+              <input type="file" id="importDataFile" accept="application/json" hidden>
+            </div>
+            <div class="notice">Use export/import if you want this to survive browser resets, phone changes, or a later code update. Upload these files to the repo root and make sure GitHub Pages is serving the correct branch and folder.</div>
           </article>
         </div>
       </section>
@@ -665,8 +908,10 @@ function renderLibraryModal() {
         <div class="modal-head"><h3>${item.title}</h3><button class="icon-btn" id="closeLibraryModalBtn">×</button></div>
         <img class="modal-media" src="assets/${item.assets[idx % item.assets.length]}" alt="${item.title} full view">
         <p class="muted" style="margin-top:10px">${item.type} · ${item.description}</p>
+        <div class="detail-section"><strong>How to do it</strong><ol class="bullet-list ordered">${(item.howTo || []).map(c => `<li>${c}</li>`).join('')}</ol></div>
         <div class="library-actions"><button class="btn btn-secondary" id="prevImgBtn3">Previous image</button><button class="btn btn-secondary" id="nextImgBtn3">Next image</button></div>
-        <div class="notice">This build includes working image viewers. No video files were present in the uploaded asset set, so the viewer focuses on images and cues.</div>
+        <div class="detail-section"><strong>Video + guide links</strong>${renderResourceLinks(item)}</div>
+        <div class="notice">This build still uses the included SVG images, but it now restores usable external video search links and written form-guide links for every movement.</div>
       </div>
     </div>
   `;
@@ -705,6 +950,9 @@ function bindEvents() {
   });
   document.querySelectorAll('[data-library]').forEach(btn => {
     btn.onclick = () => { state.selectedLibrary = btn.dataset.library; window.currentLibraryImageIndex = 0; saveState(); renderApp(); };
+  });
+  document.querySelectorAll('[data-libraryjump]').forEach(btn => {
+    btn.onclick = () => { state.selectedLibrary = btn.dataset.libraryjump; state.selectedTab = 'library'; window.currentLibraryImageIndex = 0; saveState(); renderApp(); };
   });
   document.querySelectorAll('[data-viewer]').forEach(btn => {
     btn.onclick = (e) => { e.stopPropagation(); state.selectedLibrary = btn.dataset.viewer; window.currentLibraryImageIndex = 0; saveState(); renderApp(); openModal(); };
@@ -813,6 +1061,43 @@ function bindEvents() {
       state = deepClone(defaultState);
       window.currentLibraryImageIndex = 0;
       renderApp();
+    };
+  }
+
+  const exportBtn = document.getElementById('exportDataBtn');
+  if (exportBtn) {
+    exportBtn.onclick = () => {
+      const payload = { exportedAt: new Date().toISOString(), storageKey: STORAGE_KEY, data: state };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `shaolin-path-backup-${ISO_DATE()}.json`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 500);
+    };
+  }
+
+  const importBtn = document.getElementById('importDataBtn');
+  const importFile = document.getElementById('importDataFile');
+  if (importBtn && importFile) {
+    importBtn.onclick = () => importFile.click();
+    importFile.onchange = async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      try {
+        const raw = await file.text();
+        const parsed = JSON.parse(raw);
+        if (!parsed.data || typeof parsed.data !== 'object') throw new Error('Invalid backup file.');
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed.data));
+        state = loadState();
+        renderApp();
+        alert('Backup imported.');
+      } catch (err) {
+        alert('Import failed. Use a valid Shaolin Path backup JSON file.');
+      } finally {
+        importFile.value = '';
+      }
     };
   }
 }
