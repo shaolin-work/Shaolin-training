@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaolin Path V7.1</title>
+  <link rel="stylesheet" href="./style.css?v=71" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">V7.1 • true weekly progression • GitHub Pages safe</div>
+        <h1>Shaolin Path V7.1</h1>
+        <p class="muted">Aggressive progression with a 20–30 min walk and a 20–30 min training block. Home mode pushes harder. Holiday mode holds your gains without burning you out.</p>
+      </div>
+      <div class="hero-actions">
+        <button id="goTodayBtn" class="btn">Go to today</button>
+        <button id="resetBtn" class="btn danger">Reset local data</button>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="home">Home</button>
+      <button class="tab-btn" data-tab="today">Today</button>
+      <button class="tab-btn" data-tab="path">Path</button>
+      <button class="tab-btn" data-tab="progress">Progress</button>
+      <button class="tab-btn" data-tab="library">Library</button>
+      <button class="tab-btn" data-tab="journal">Journal</button>
+      <button class="tab-btn" data-tab="settings">Settings</button>
+    </nav>
+
+    <main>
+      <section id="tab-home" class="tab-panel">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Current cycle</h2><span class="badge" id="badgeMode">Home push</span></div>
+            <div class="stats-grid" id="homeStats"></div>
+            <div class="callout top-gap"><strong>Recommended daily structure:</strong> 25 min walk + 25 min training block.</div>
+            <div class="spacer"></div>
+            <div class="card" id="mindsetCard"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>Today's summary</h2></div>
+            <div id="homeTodaySummary" class="stack"></div>
+            <div class="spacer"></div>
+            <div class="panel-subhead">Quick tools</div>
+            <div class="btn-row">
+              <button id="exportBtn" class="btn">Export</button>
+              <button id="importBtn" class="btn">Import</button>
+              <input id="importFile" type="file" accept="application/json" hidden />
+              <button id="openWalkBtn" class="btn">Open walk guide</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-today" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><div><h2 id="todayTitle"></h2><div class="muted" id="todaySubtitle"></div></div><span class="badge" id="todayBadge"></span></div>
+            <div class="callout" id="walkScript"></div>
+            <div class="spacer"></div>
+            <div class="panel-subhead">Readiness gate</div>
+            <div class="grid two-col" id="readinessGrid"></div>
+            <div class="spacer"></div>
+            <label class="field-label" for="todayNotes">Pre-session notes</label>
+            <textarea id="todayNotes" placeholder="Sore? flat? ready to push?"></textarea>
+            <div class="spacer"></div>
+            <div id="todayWorkout" class="stack"></div>
+            <div class="spacer"></div>
+            <div class="btn-row">
+              <button id="completeSessionBtn" class="btn success">Complete today's session</button>
+              <button id="prevDayBtn" class="btn">Preview previous day</button>
+              <button id="nextDayBtn" class="btn">Preview next day</button>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>After-session review</h2></div>
+            <div class="grid two-col" id="reviewGrid"></div>
+            <label class="field-label" for="reviewNotes">How did it feel?</label>
+            <textarea id="reviewNotes" placeholder="What pushed you? What was too easy? What needs tightening?"></textarea>
+            <div class="spacer"></div>
+            <div class="btn-row">
+              <button id="saveReviewBtn" class="btn">Save review</button>
+            </div>
+            <div class="spacer"></div>
+            <div class="card">
+              <strong>How V7.1 works</strong>
+              <div class="small-muted">Each completed session advances the current day. Every 3 completed sessions the core work scales. Every 7 completed sessions the week rolls forward and targets rise again. Home mode pushes harder than holiday mode.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-path" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>7-day wave</h2></div>
+            <div id="pathDays" class="stack"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>Current progression levels</h2></div>
+            <div id="pathLevels" class="stats-grid"></div>
+            <div class="spacer"></div>
+            <div class="card">
+              <strong>System logic</strong>
+              <div class="small-muted">The app runs a weekly wave: Iron Frame, Rooted Legs, Flow & Mobility, Power Engine, Upper + Core Volume, Recovery Control, and Discipline Test. Recovery does not mean easy. It means controlled work so the next push day hits harder.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-progress" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Current targets</h2></div>
+            <div id="targetsGrid" class="stats-grid"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>Consistency</h2></div>
+            <div id="consistencyGrid" class="stats-grid"></div>
+            <div class="spacer"></div>
+            <div class="card"><strong>Mindset rule</strong><div id="mindsetRule" class="small-muted"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-library" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Movement library</h2></div>
+            <input id="librarySearch" type="text" placeholder="Search movement library..." />
+            <div class="spacer"></div>
+            <div id="libraryList" class="stack scroll"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div><h2 id="libTitle"></h2><div class="muted" id="libArea"></div></div><span class="badge" id="libLevel"></span></div>
+            <div class="card"><strong>Mission</strong><div id="libMission" class="small-muted"></div></div>
+            <div class="spacer"></div>
+            <div id="libImages" class="grid three-col"></div>
+            <div class="spacer"></div>
+            <div class="grid two-col">
+              <div class="card"><strong>Looks right when...</strong><div id="libLooks" class="small-muted"></div></div>
+              <div class="card"><strong>Feels right when...</strong><div id="libFeels" class="small-muted"></div></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="grid two-col">
+              <div class="card"><strong>How to set up</strong><div id="libSetup" class="small-muted"></div></div>
+              <div class="card"><strong>Primary cues</strong><div id="libCues" class="small-muted"></div></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="card"><strong>Step-by-step</strong><div id="libSteps" class="small-muted"></div></div>
+            <div class="spacer"></div>
+            <div class="grid two-col">
+              <div class="card"><strong>Coaching help</strong><div id="libCoach" class="small-muted"></div></div>
+              <div class="card"><strong>Pass standard</strong><div id="libStandard" class="small-muted"></div></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="card"><strong>Video reference</strong><div id="libVideo" class="small-muted"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-journal" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Journal</h2></div>
+            <textarea id="journalBox" placeholder="Write what you noticed in body, mind, mobility, stress, and strength."></textarea>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>Evidence</h2></div>
+            <input id="evidenceBox" type="text" placeholder="Optional video filename, album note, or progress photo note" />
+            <div class="spacer"></div>
+            <div class="card"><strong>Rule</strong><div class="small-muted">If the session felt easy, say so. V7.1 needs honest feedback so the next refinement can push harder.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-settings" class="tab-panel hidden">
+        <div class="grid two-col">
+          <div class="panel">
+            <div class="panel-head"><h2>Settings</h2></div>
+            <div class="stack">
+              <div class="card">
+                <strong>Training context</strong>
+                <div class="btn-row top-gap">
+                  <button id="contextHomeBtn" class="btn">Home push</button>
+                  <button id="contextHolidayBtn" class="btn">Holiday maintain</button>
+                </div>
+              </div>
+              <div class="card">
+                <strong>Theme</strong>
+                <div class="btn-row top-gap">
+                  <button id="themeDarkBtn" class="btn">Dark</button>
+                  <button id="themeLightBtn" class="btn">Light</button>
+                </div>
+              </div>
+              <div class="card">
+                <strong>Storage</strong>
+                <div id="storageText" class="small-muted"></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>What changed in V7.1</h2></div>
+            <div class="stack">
+              <div class="card">Current day now advances correctly after completion.</div>
+              <div class="card">The 7-day cycle actually changes the session focus.</div>
+              <div class="card">Targets scale every 3 sessions and each completed week tightens the baseline.</div>
+              <div class="card">Image cards can be tapped to enlarge on phone and PC.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="imageModal" class="modal hidden">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+      <button id="modalCloseBtn" class="btn modal-close">Close</button>
+      <button id="modalPrevBtn" class="btn modal-nav">Prev</button>
+      <img id="modalImg" alt="Guide image" />
+      <button id="modalNextBtn" class="btn modal-nav">Next</button>
+      <div id="modalCaption" class="small-muted modal-caption"></div>
+    </div>
+  </div>
+
+  <script src="./app.js?v=71"></script>
+</body>
+</html>
